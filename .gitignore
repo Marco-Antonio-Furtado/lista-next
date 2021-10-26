@@ -34,7 +34,4 @@ yarn-error.log*
 .vercel
 
 # random
-.eslintrc.json
-package.json
-next.config.js
 yarn.lock

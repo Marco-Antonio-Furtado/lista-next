@@ -1,4 +1,4 @@
-import styles from "../styles/Task.module.css"
+import styles from "./index.module.css"
 
 export default function Task(){
     return(

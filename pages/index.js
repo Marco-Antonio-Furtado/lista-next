@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import List from "../components/List";
+import List from "../components/list";
 
 function Home() {
   return (

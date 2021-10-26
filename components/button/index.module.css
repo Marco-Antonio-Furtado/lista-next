@@ -4,11 +4,8 @@
   font-size: 1em;
   font-weight: 900;
   height: 40px;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   outline: none;
   border: none;
   border-radius: 4px;
+  width: 100%;
 }

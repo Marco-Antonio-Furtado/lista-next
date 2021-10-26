@@ -12,8 +12,8 @@ export default  function List(){
                 <Button />
             </div>
             
-        <Task />
         </div>
+        <Task />
     </div>
     )
 }

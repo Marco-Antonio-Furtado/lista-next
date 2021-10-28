@@ -13,7 +13,7 @@ export default  function List(){
     <div className={styles.wrapper}>
         <header className={styles.header}>
             <input className={styles.input} onChange={handleInputData}/>
-            <Button className={styles.btnAdd} />
+            <Button className={styles.btnAdd} onClick={addtask}>Adicionar</Button>
         </header>
         <main className={styles.main}>
             {[1, 2, 3].map((n, i)=><Task key={i} />)}

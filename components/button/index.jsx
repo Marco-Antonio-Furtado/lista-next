@@ -1,9 +1,13 @@
 import styles from "./index.module.css"
 
-export default function Button(props){
+export default function Button({className, children, onClick} ){
     return(
-        <div {...props}>
-            <button className={styles.btn}>Adicionar</button>
+        <div className={className}>
+            <button 
+            className={styles.btn}
+            onClick={onClick}>
+              
+                {children}</button>
         </div>
     )
 }

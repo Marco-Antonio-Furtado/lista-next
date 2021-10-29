@@ -30,7 +30,7 @@ export default  function List(){
              {
                  id:3,
                  title:inputData,
-                 completed:true,
+                 completed:false,
              }    
          ]
          setList(newList)

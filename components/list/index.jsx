@@ -9,6 +9,11 @@ export default  function List(){
     function handleInputData(e)
     {setInputData(e.target.value)}
 
+    function handleEnter(e){
+        if (e.keyCode !== 13){return}
+        else {addtask()}
+         
+    }
 
     const [list, setList] = useState(
         
@@ -41,7 +46,11 @@ export default  function List(){
         return(
     <div className={styles.wrapper}>
         <header className={styles.header}>
-            <input className={styles.input} onChange={handleInputData}/>
+            <input 
+            value={inputData} 
+            className={styles.input} 
+            onChange={handleInputData}
+            onKeyUp={handleEnter}/>
             <Button className={styles.btnAdd} onClick={addtask}>Adicionar</Button>
         </header>
         <main className={styles.main}>

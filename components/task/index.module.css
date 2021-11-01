@@ -9,3 +9,7 @@
   justify-content: space-between;
   border-radius: 4px;
 }
+
+.taskTitle {
+  cursor: pointer;
+}

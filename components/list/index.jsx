@@ -16,6 +16,10 @@ export default  function List(){
          
     }
 
+    function handleTaskClick(taskId){
+        console.log(taskId)
+    }
+
     const [list, setList] = useState(
         
         [
@@ -59,10 +63,10 @@ export default  function List(){
             <Button className={styles.btnAdd} onClick={addTask}>Submit</Button>
         </header>
         <main className={styles.main}>
-            {list.map((task, i)=><Task key={i} task={task} />)}
             <div>
                 {error ? <p className={styles.requiredInput}>*Required input</p> : ""}
             </div>
+            {list.map((task, i)=><Task key={i} task={task} onClick={handleTaskClick}/>)}
         </main>
     </div>
     )

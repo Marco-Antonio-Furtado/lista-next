@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
+  word-break: break-all;
 }
 
 .taskTitle {

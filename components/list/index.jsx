@@ -2,6 +2,7 @@ import styles from "./index.module.css"
 import Button from "../button"
 import Task from "../task"
 import { useState } from "react"
+import { v4 as uuidv4} from "uuid"
 
 export default  function List(){
     const [inputData, setInputData] = useState("")
@@ -16,20 +17,30 @@ export default  function List(){
          
     }
 
-    function handleTaskClick(taskId){
-        console.log(taskId)
+    function handleTaskClick(task){
+        if(task.id){task.completed = !task.completed}else{return}
+        const newList = [...list]
+        setList(newList)
     }
+
+    function taskDelete(taskId){
+        console.log(taskId)
+        const newList = list.filter((task)=>task.id !== taskId)
+        setList(newList)
+
+    }
+
 
     const [list, setList] = useState(
         
         [
             {
-                id: 1,
+                id: uuidv4(),
                 title: "Something",
                 completed: true,
              },
              {
-                 id: 2,
+                 id: uuidv4(),
                  title: "Other thing",
                  completed: false
              },
@@ -41,7 +52,7 @@ export default  function List(){
          else{
          const newList = [...list, 
              {
-                 id:3,
+                 id:uuidv4(),
                  title:inputData,
                  completed:false,
              }    
@@ -60,13 +71,14 @@ export default  function List(){
             className={styles.input} 
             onChange={handleInputData}
             onKeyUp={handleEnter}/>
+            {/* \/\/ className \/\/ funciona??? */}
             <Button className={styles.btnAdd} onClick={addTask}>Submit</Button>
         </header>
         <main className={styles.main}>
-            <div>
-                {error ? <p className={styles.requiredInput}>*Required input</p> : ""}
-            </div>
-            {list.map((task, i)=><Task key={i} task={task} onClick={handleTaskClick}/>)}
+            {error && <p className={styles.requiredInput}>*Required input</p>}
+            {list.map((task)=><Task key={task.id} task={task} 
+            handleTaskClick={handleTaskClick} 
+            taskDelete={taskDelete}/>)}
         </main>
     </div>
     )

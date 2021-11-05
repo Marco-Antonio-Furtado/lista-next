@@ -3,4 +3,8 @@
   margin: 0px;
   padding: 10px;
   box-sizing: border-box;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

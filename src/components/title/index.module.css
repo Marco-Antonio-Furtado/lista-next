@@ -1,0 +1,20 @@
+.title {
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: #fff;
+  height: 40px;
+  font-size: 1.3em;
+  transition: all ease 1s;
+}
+
+.title:focus {
+  flex: auto;
+  background-color: #777;
+  color: white;
+  height: 40px;
+  width: 305px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}

@@ -24,7 +24,7 @@ function Home() {
   return (
     <div>
       <Header kanban={kanban} setKanban={setKanban} />
-      <Kanban kanban={kanban} />
+      <Kanban kanban={kanban} setKanban={setKanban} />
     </div>
   );
 }

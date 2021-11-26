@@ -14,6 +14,7 @@ export default function Title() {
         className={styles.title}
         onChange={handleInputData}
         value={inputData}
+        autoFocus
       />
     </div>
   );

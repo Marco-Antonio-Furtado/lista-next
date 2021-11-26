@@ -4,8 +4,14 @@
   background-color: #222;
   color: #fff;
   height: 40px;
+  width: 305px;
   font-size: 1.3em;
-  transition: all ease 1s;
+  transition: all ease 0.25s;
+}
+
+.title:hover {
+  background-color: #333;
+  border-radius: 4px;
 }
 
 .title:focus {

@@ -57,7 +57,6 @@ export default function List({ INITIAL_VALUE }) {
         <Title />
       </header>
       <main className={styles.main}>
-        {error && <p className={styles.requiredInput}>*Required input</p>}
         {list.map((task) => (
           <Task
             key={task.id}
@@ -76,6 +75,7 @@ export default function List({ INITIAL_VALUE }) {
         />
         <Button onClick={addTask}>Submit</Button>
       </footer>
+      {error && <p className={styles.requiredInput}>*Required input</p>}
     </div>
   );
 }

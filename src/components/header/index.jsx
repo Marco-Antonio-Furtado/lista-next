@@ -1,18 +1,25 @@
 import styles from "./index.module.css";
 import List from "../list";
-import ButtonHeader from "../button-header";
+import ButtonHeader from "../buttonHeader";
 import { v4 as uuid } from "uuid";
 
 export default function Header({ kanban, setKanban }) {
-  const newKanban = [...kanban, <List INITIAL_VALUE={[]} key={uuid()} />];
-
-  function changeKanban() {
+  function newList() {
+    const newKanban = [
+      ...kanban,
+      {
+        id: uuid(),
+        name: "",
+        tasks: [],
+      },
+    ];
     setKanban(newKanban);
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
   }
 
   return (
     <div className={styles.head}>
-      <ButtonHeader className={styles.addList} onClick={changeKanban}>
+      <ButtonHeader className={styles.addList} onClick={newList}>
         +Add List
       </ButtonHeader>
     </div>

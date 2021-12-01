@@ -24,31 +24,7 @@ export default function Kanban({ kanban, setKanban }) {
         ))}
       </div>
       <div>
-        <div className={close ? styles.container : styles.containerMod}>
-          {close ? (
-            <div>
-              <button
-                className={styles.btnAddList}
-                onClick={() => setClose(!close)}
-              >
-                + Add list
-              </button>
-            </div>
-          ) : (
-            <div className={styles.box}>
-              <input
-                className={styles.iptAddList}
-                onBlur={() => setClose(!close)}
-                autoFocus
-              />
-              <div className={styles.btnMUI}>
-                <Button variant="contained" onClick={() => setClose(!close)}>
-                  + Add
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
+        <AddTitle kanban={kanban} setKanban={setKanban} />
       </div>
     </div>
   );

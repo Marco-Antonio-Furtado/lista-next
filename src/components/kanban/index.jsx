@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import List from "../list";
-import { v4 as uuid } from "uuid";
-import Button from "@mui/material/Button";
+import AddTitle from "../addTitle";
 
+//The kanban useState is located on src/pages/index.js
 export default function Kanban({ kanban, setKanban }) {
-  const newKanban = [...kanban, <List INITIAL_VALUE={[]} key={uuid()} />];
-  const [close, setClose] = useState(true);
+  useEffect(() => {
+    const kanbanFromStorage = window.localStorage.getItem("kanban");
+    const kanbanFromStorageArr = JSON.parse(kanbanFromStorage);
 
-  function changeKanban() {
-    setKanban(newKanban);
-  }
+    setKanban((state) => kanbanFromStorageArr);
+  }, []);
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.kanban}>{kanban}</div>
+      <div className={styles.kanban}>
+        {kanban.map((list) => (
+          <List
+            INITIAL_VALUE={list.tasks}
+            TITLE_VALUE={list.name}
+            key={list.id}
+          />
+        ))}
+      </div>
       <div>
         <div className={close ? styles.container : styles.containerMod}>
           {close ? (

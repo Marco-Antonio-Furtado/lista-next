@@ -1,0 +1,53 @@
+.container,
+.containerMod {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  margin: 80px 0px 0px 10px;
+  padding: 15px;
+  height: 70px;
+  overflow: hidden;
+  transition: all ease 300ms;
+}
+
+.containerMod {
+  height: 120px;
+  background-color: #333;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnAddList,
+.iptAddList {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding: 15px;
+  height: 40px;
+  width: 305px;
+  color: #fff;
+  opacity: 0.7;
+  font-weight: 700;
+}
+
+.btnAddList {
+  background-color: #444;
+  cursor: pointer;
+}
+
+.iptAddList {
+  background-color: #888;
+}
+
+.btnMUI {
+  width: fit-content;
+  margin: 10px 0px 0px 0px;
+}
+
+.btnAddList:hover,
+.iptAddList:hover {
+  opacity: 1;
+}

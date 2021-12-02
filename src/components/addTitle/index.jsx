@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import styles from "./index.module.css";
-import List from "../list";
 import { v4 as uuid } from "uuid";
 import Button from "@mui/material/Button";
 

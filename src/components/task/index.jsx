@@ -1,11 +1,40 @@
-import styles from "./index.module.css"
+import styles from "./index.module.css";
 
-export default function Task({ task, handleTaskClick, taskDelete }){
-    return(
-        <div className={styles.task}
-        style={task.completed ? { borderLeft: "5px solid chartreuse" } : {}}>
-            <p className={styles.taskTitle}  onClick={()=>handleTaskClick(task)} >{task.title}</p>
-            <p className={styles.btnDelete} onClick={() =>taskDelete(task.id)}>X</p>
-        </div>
-    )
+export default function Task({
+  task,
+  title,
+  isCompleted,
+  id,
+  handleTaskClick,
+  taskDelete,
+}) {
+  return (
+    <div
+      className={styles.task}
+      style={
+        isCompleted
+          ? {
+              borderLeft: "5px solid chartreuse",
+            }
+          : {}
+      }
+    >
+      <p className={styles.taskTitle} onClick={() => handleTaskClick(task)}>
+        <span
+          style={
+            isCompleted
+              ? {
+                  textDecoration: "line-through",
+                }
+              : {}
+          }
+        >
+          {title}
+        </span>
+      </p>
+      <p className={styles.btnDelete} onClick={() => taskDelete(id)}>
+        X
+      </p>
+    </div>
+  );
 }

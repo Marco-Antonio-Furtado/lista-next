@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 
-export default function Title() {
-  const [inputData, setInputData] = useState("To Do");
+export default function Title({ TITLE_VALUE }) {
+  const [inputData, setInputData] = useState(TITLE_VALUE);
 
   function handleInputData(e) {
     setInputData(e.target.value);
@@ -14,7 +14,6 @@ export default function Title() {
         className={styles.title}
         onChange={handleInputData}
         value={inputData}
-        autoFocus
       />
     </div>
   );

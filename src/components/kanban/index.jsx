@@ -16,11 +16,7 @@ export default function Kanban({ kanban, setKanban }) {
     <div className={styles.wrapper}>
       <div className={styles.kanban}>
         {kanban.map((list) => (
-          <List
-            INITIAL_VALUE={list.tasks}
-            TITLE_VALUE={list.name}
-            key={list.id}
-          />
+          <List TITLE_VALUE={list.name} key={list.id} tasks={list.tasks} />
         ))}
       </div>
       <div>
@@ -29,3 +25,38 @@ export default function Kanban({ kanban, setKanban }) {
     </div>
   );
 }
+
+// const INITIAL_VALUE = [
+//   {
+//     id: uuid(),
+//     name: "To Do",
+//     tasks: [
+//       {
+//         id: uuid(),
+//         title: "Something",
+//         completed: true,
+//       },
+//       {
+//         id: uuid(),
+//         title: "Other thing",
+//         completed: false,
+//       },
+//     ],
+//   },
+//   {
+//     id: uuid(),
+//     name: "Doing",
+//     tasks: [
+//       {
+//         id: uuid(),
+//         title: "Another thing",
+//         completed: true,
+//       },
+//       {
+//         id: uuid(),
+//         title: "Thing 4",
+//         completed: false,
+//       },
+//     ],
+//   },
+// ];

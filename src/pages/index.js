@@ -1,26 +1,45 @@
 import { useState } from "react";
 import Header from "../components/header";
-import List from "../components/list";
 import Kanban from "../components/kanban";
 import { v4 as uuid } from "uuid";
 
 const INITIAL_VALUE = [
   {
     id: uuid(),
-    title: "Something",
-    completed: true,
+    name: "To Do",
+    tasks: [
+      {
+        id: uuid(),
+        title: "Something",
+        completed: true,
+      },
+      {
+        id: uuid(),
+        title: "Other thing",
+        completed: false,
+      },
+    ],
   },
   {
     id: uuid(),
-    title: "Other thing",
-    completed: false,
+    name: "Doing",
+    tasks: [
+      {
+        id: uuid(),
+        title: "Another thing",
+        completed: true,
+      },
+      {
+        id: uuid(),
+        title: "Thing 4",
+        completed: false,
+      },
+    ],
   },
 ];
 
 function Home() {
-  const [kanban, setKanban] = useState([
-    <List INITIAL_VALUE={INITIAL_VALUE} key={uuid()} />,
-  ]);
+  const [kanban, setKanban] = useState(INITIAL_VALUE);
   return (
     <div>
       <Header kanban={kanban} setKanban={setKanban} />

@@ -2,8 +2,11 @@ import { useState, useRef } from "react";
 import styles from "./index.module.css";
 import { v4 as uuid } from "uuid";
 import Button from "@mui/material/Button";
+import { useKanban } from "../../context/Kanban";
 
-export default function AddTitle({ kanban, setKanban }) {
+export default function AddTitle() {
+  const { kanban, setKanban } = useKanban();
+
   const [inputData, setInputData] = useState("");
   const [close, setClose] = useState(true);
 

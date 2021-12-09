@@ -4,9 +4,8 @@ import List from "../list";
 import AddTitle from "../addTitle";
 import { useKanban } from "../../context/Kanban";
 
-//The kanban useState is located on src/pages/index.js
 export default function Kanban() {
-  const { kanban, setKanban } = useKanban();
+  const { kanban } = useKanban();
   useEffect(() => {
     // const kanbanFromStorage = window.localStorage.getItem("kanban");
     // const kanbanFromStorageArr = JSON.parse(kanbanFromStorage);
@@ -22,7 +21,7 @@ export default function Kanban() {
         ))}
       </div>
       <div>
-        <AddTitle kanban={kanban} setKanban={setKanban} />
+        <AddTitle />
       </div>
     </div>
   );

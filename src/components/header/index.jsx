@@ -1,9 +1,11 @@
 import styles from "./index.module.css";
-import List from "../list";
 import ButtonHeader from "../buttonHeader";
 import { v4 as uuid } from "uuid";
+import { useKanban } from "../../context/Kanban";
 
-export default function Header({ kanban, setKanban }) {
+export default function Header() {
+  const { kanban, setKanban } = useKanban();
+
   function newList() {
     const newKanban = [
       ...kanban,

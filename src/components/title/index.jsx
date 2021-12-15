@@ -1,8 +1,12 @@
 import { useState } from "react";
 import styles from "./index.module.css";
+import { useKanban } from "../../context/Kanban";
 
-export default function Title({ TITLE_VALUE }) {
-  const [inputData, setInputData] = useState(TITLE_VALUE);
+export default function Title({ list, titleValue }) {
+  const [inputData, setInputData] = useState(titleValue);
+  const { handleTitle } = useKanban();
+
+  handleTitle(list, inputData);
 
   function handleInputData(e) {
     setInputData(e.target.value);

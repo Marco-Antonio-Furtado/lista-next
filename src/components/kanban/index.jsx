@@ -3,13 +3,14 @@ import styles from "./index.module.css";
 import List from "../list";
 import AddTitle from "../addTitle";
 import { useKanban } from "../../context/Kanban";
+import { v4 as uuid } from "uuid";
 
 export default function Kanban() {
-  const { kanban } = useKanban();
+  const { kanban, setKanban } = useKanban();
   useEffect(() => {
-    // const kanbanFromStorage = window.localStorage.getItem("kanban");
-    // const kanbanFromStorageArr = JSON.parse(kanbanFromStorage);
-    // setKanban((state) => kanbanFromStorageArr);
+    let kanbanFromStorage = JSON.parse(localStorage.getItem("kanban"));
+    let kanbanValue = kanbanFromStorage ? kanbanFromStorage : kanban;
+    setKanban(kanbanValue);
     window.localStorage.setItem("kanban", JSON.stringify(kanban));
   }, []);
 
@@ -17,7 +18,7 @@ export default function Kanban() {
     <div className={styles.wrapper}>
       <div className={styles.kanban}>
         {kanban.map((list) => (
-          <List TITLE_VALUE={list.name} key={list.id} tasks={list.tasks} />
+          <List list={list} key={uuid()} />
         ))}
       </div>
       <div>

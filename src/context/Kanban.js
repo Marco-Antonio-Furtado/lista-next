@@ -52,5 +52,47 @@ export default function KanbanProvider({ children }) {
 }
 
 export function useKanban() {
-  return useContext(kanbanContext);
+  const { kanban, setKanban } = useContext(kanbanContext);
+
+  function updateKanban() {
+    setKanban([...kanban]);
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
+  }
+
+  function addTask(list, task) {
+    const item = kanban.find((l) => l.id === list.id);
+    item.tasks.push(task);
+    setKanban([...kanban]);
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
+  }
+
+  function addList(list) {
+    setKanban([...kanban, list]);
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
+  }
+
+  function taskDelete(list, taskId) {
+    let item = kanban.find((l) => l.id === list.id);
+    const newTasks = item.tasks.filter((task) => task.id !== taskId);
+    item.tasks = newTasks;
+    updateKanban();
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
+  }
+
+  function handleTitle(list, title) {
+    const item = kanban.find((l) => l.id === list.id);
+    item.name = title;
+    console.log(kanban);
+    // window.localStorage.setItem("kanban", JSON.stringify(kanban));
+  }
+
+  return {
+    kanban,
+    setKanban,
+    updateKanban,
+    addTask,
+    addList,
+    taskDelete,
+    handleTitle,
+  };
 }

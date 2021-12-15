@@ -7,6 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export default function Kanban() {
   const { kanban, setKanban } = useKanban();
+
   useEffect(() => {
     let kanbanFromStorage = JSON.parse(localStorage.getItem("kanban"));
     let kanbanValue = kanbanFromStorage ? kanbanFromStorage : kanban;

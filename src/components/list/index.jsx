@@ -3,83 +3,61 @@ import Button from "../button";
 import Task from "../task";
 import Title from "../title";
 import { useEffect, useState } from "react";
+import { useKanban } from "../../context/Kanban";
 import { v4 as uuidv4 } from "uuid";
 
-export default function List({ TITLE_VALUE, tasks }) {
+export default function List(list) {
+  const { kanban, addTask, taskDelete, updateKanban } = useKanban();
+
   const [inputData, setInputData] = useState("");
   const [error, setError] = useState(false);
-  const [list, setList] = useState(tasks);
 
-  // useEffect(() => {
-  //   const kanbanFromStorage = window.localStorage.getItem("kanban");
-  //   const kanbanFromStorageArr = JSON.parse(kanbanFromStorage);
+  //for some reason list is inside list. Fix this later
 
-  //   setList((state) => kanbanFromStorageArr[0].tasks);
-  // }, []);
-
-  // window.localStorage.setItem("list", JSON.stringify(list));
+  list = list.list;
+  let tasks = list.tasks;
 
   function handleInputData(e) {
     setInputData(e.target.value);
   }
 
-  function handleEnter(e) {
-    if (e.keyCode !== 13) {
-      return;
-    } else {
-      addTask();
-    }
-  }
-
-  function addTask() {
+  function handleSubmit() {
     setError(false);
     if (inputData === "") {
       setError(true);
     } else {
-      setList([
-        ...list,
-        {
-          id: uuidv4(),
-          title: inputData,
-          completed: false,
-        },
-      ]);
+      const task = {
+        id: uuidv4(),
+        title: inputData,
+        completed: false,
+      };
+      addTask(list, task);
       setInputData("");
-      window.localStorage.setItem("list", JSON.stringify(list));
     }
   }
 
-  function handleTaskClick(task) {
+  function toggleTaskCompleted(task) {
     if (task.id) {
       task.completed = !task.completed;
-    } else {
-      return;
+      updateKanban();
     }
-    const newList = [...list];
-    setList(newList);
-    window.localStorage.setItem("list", JSON.stringify(newList));
-  }
-
-  function taskDelete(taskId) {
-    const newList = list.filter((task) => task.id !== taskId);
-    setList(newList);
-    window.localStorage.setItem("list", JSON.stringify(newList));
   }
 
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <Title TITLE_VALUE={TITLE_VALUE} />
+        <Title list={list} titleValue={list.name} />
       </header>
       <main className={styles.main}>
-        {list.map((task) => (
+        {tasks.map((task) => (
           <Task
             key={task.id}
+            list={list}
             task={task}
             isCompleted={task.completed}
             title={task.title}
             id={task.id}
-            handleTaskClick={handleTaskClick}
+            toggleTaskCompleted={toggleTaskCompleted}
             taskDelete={taskDelete}
           />
         ))}

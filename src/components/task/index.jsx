@@ -33,7 +33,7 @@ export default function Task({
           {title}
         </span>
       </p>
-      <p className={styles.btnDelete} onClick={() => taskDelete(id)}>
+      <p className={styles.btnDelete} onClick={() => taskDelete(list, id)}>
         X
       </p>
     </div>

@@ -62,14 +62,15 @@ export default function List(list) {
           />
         ))}
       </main>
-      <footer className={styles.footer}>
-        <input
-          value={inputData}
-          className={styles.input}
-          onChange={handleInputData}
-          onKeyUp={handleEnter}
-        />
-        <Button onClick={addTask}>Submit</Button>
+      <footer>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            value={inputData}
+            className={styles.input}
+            onChange={handleInputData}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
       </footer>
       {error && <p className={styles.requiredInput}>*Required input</p>}
     </div>

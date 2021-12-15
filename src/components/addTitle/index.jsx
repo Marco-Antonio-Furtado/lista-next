@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { useKanban } from "../../context/Kanban";
 
 export default function AddTitle() {
-  const { kanban, setKanban } = useKanban();
+  const { kanban, addList } = useKanban();
 
   const [inputData, setInputData] = useState("");
   const [close, setClose] = useState(true);
@@ -15,16 +15,13 @@ export default function AddTitle() {
   }
 
   function newList() {
-    const newKanban = [
-      ...kanban,
-      {
-        id: uuid(),
-        name: inputData,
-        tasks: [],
-      },
-    ];
-    setKanban(newKanban);
-    window.localStorage.setItem("kanban", JSON.stringify(kanban));
+    const newList = {
+      id: uuid(),
+      name: inputData,
+      tasks: [],
+    };
+
+    addList(newList);
     setInputData("");
   }
 

@@ -4,24 +4,17 @@ import { v4 as uuid } from "uuid";
 import { useKanban } from "../../context/Kanban";
 
 export default function Header() {
-  const { kanban, setKanban } = useKanban();
+  const { kanban, addList } = useKanban();
 
-  function newList() {
-    const newKanban = [
-      ...kanban,
-      {
-        id: uuid(),
-        name: "",
-        tasks: [],
-      },
-    ];
-    setKanban(newKanban);
-    window.localStorage.setItem("kanban", JSON.stringify(kanban));
-  }
+  const newList = {
+    id: uuid(),
+    name: "",
+    tasks: [],
+  };
 
   return (
     <div className={styles.head}>
-      <ButtonHeader className={styles.addList} onClick={newList}>
+      <ButtonHeader className={styles.addList} onClick={() => addList(newList)}>
         +Add List
       </ButtonHeader>
     </div>

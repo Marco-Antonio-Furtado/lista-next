@@ -21,11 +21,6 @@
   gap: 5px;
 }
 
-.footer {
-  display: flex;
-  gap: 15px;
-}
-
 .input {
   flex: auto;
   background-color: #777;
@@ -41,4 +36,9 @@
   padding: 0 0 10px 0;
   color: red;
   font-size: 12px;
+}
+
+.form {
+  display: flex;
+  gap: 15px;
 }

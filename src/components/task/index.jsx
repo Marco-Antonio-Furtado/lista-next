@@ -1,11 +1,12 @@
 import styles from "./index.module.css";
 
 export default function Task({
+  list,
   task,
   title,
   isCompleted,
   id,
-  handleTaskClick,
+  toggleTaskCompleted,
   taskDelete,
 }) {
   return (
@@ -19,7 +20,7 @@ export default function Task({
           : {}
       }
     >
-      <p className={styles.taskTitle} onClick={() => handleTaskClick(task)}>
+      <p className={styles.taskTitle} onClick={() => toggleTaskCompleted(task)}>
         <span
           style={
             isCompleted

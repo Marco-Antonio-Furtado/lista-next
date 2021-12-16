@@ -79,11 +79,11 @@ export function useKanban() {
     window.localStorage.setItem("kanban", JSON.stringify(kanban));
   }
 
-  function handleTitle(list, title) {
+  function handleTitle(list, name) {
     const item = kanban.find((l) => l.id === list.id);
-    item.name = title;
+    item.name = name;
     console.log(kanban);
-    // window.localStorage.setItem("kanban", JSON.stringify(kanban));
+    window.localStorage.setItem("kanban", JSON.stringify(kanban));
   }
 
   return {

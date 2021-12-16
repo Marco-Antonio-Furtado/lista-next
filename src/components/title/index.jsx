@@ -6,10 +6,10 @@ export default function Title({ list, titleValue }) {
   const [inputData, setInputData] = useState(titleValue);
   const { handleTitle } = useKanban();
 
-  handleTitle(list, inputData);
-
   function handleInputData(e) {
-    setInputData(e.target.value);
+    const title = e.target.value;
+    setInputData(title);
+    handleTitle(list, title);
   }
 
   return (

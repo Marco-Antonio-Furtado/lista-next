@@ -9,8 +9,7 @@ function App() {
     <div>
       <Head>
         <title>Thrillo</title>
-        {/* <link rel="icon" href="../public/favicon.ico"></link> 
-        NÃO FUNCIONA, NÃO SEI PORQUÊ*/}
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></link>
       </Head>
 
       <KanbanProvider>

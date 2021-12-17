@@ -9,10 +9,10 @@ export default function Kanban() {
   const { kanban, setKanban } = useKanban();
 
   useEffect(() => {
-    let kanbanFromStorage = JSON.parse(localStorage.getItem("kanban"));
-    let kanbanValue = kanbanFromStorage ? kanbanFromStorage : kanban;
+    let kanbanFromStorage = localStorage.getItem("kanban");
+    let parsedKanban = JSON.parse(kanbanFromStorage);
+    let kanbanValue = kanbanFromStorage ? parsedKanban : kanban;
     setKanban(kanbanValue);
-    window.localStorage.setItem("kanban", JSON.stringify(kanban));
   }, []);
 
   return (

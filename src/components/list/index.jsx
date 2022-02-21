@@ -21,10 +21,11 @@ export default function List(list) {
     setInputData(e.target.value);
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
     setError(false);
     if (inputData === "") {
       setError(true);
+      e.preventDefault();
     } else {
       const task = {
         id: uuidv4(),
